@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.feyzaurkut.onboardingsampleproject.R
+import com.feyzaurkut.onboardingsampleproject.util.SharedPreferences
 
 class SplashFragment : Fragment() {
 
@@ -17,15 +18,12 @@ class SplashFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        //val isVisited = context?.let { SharedPref(it).getBooleanVisitOnBoarding() }
+        val isVisited = context?.let { SharedPreferences(it).getBoolean() }
 
         Handler(Looper.getMainLooper()).postDelayed({
-            findNavController().navigate(R.id.action_splashFragment_to_onboardingFragment)
-            /* if(isVisited == true)
-                 observeDatabase()
-             else
-                 findNavController().navigate(SplashScreenFragmentDirections.actionSplashScreenFragmentToOnBoardingFragment())
-         */}, 3000)
+            if(isVisited == true) findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+            else findNavController().navigate(R.id.action_splashFragment_to_onboardingFragment)
+        }, 2000)
 
         return inflater.inflate(R.layout.fragment_splash, container, false)
     }
