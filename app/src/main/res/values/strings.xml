@@ -2,4 +2,16 @@
     <string name="app_name">OnboardingSampleProject</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="on_boarding_title1">PLAN</string>
+    <string name="on_boarding_title2">READY</string>
+    <string name="on_boarding_title3">GO</string>
+
+    <string name="description1">Planning your trip is almost as exciting as the journey itself!</string>
+    <string name="description2">Advance research will help you make the best use of your time while there.</string>
+    <string name="description3">When you set out to travel the world, do it with all your heart.</string>
+    <string name="get_started">Get Started</string>
+    <string name="skip">Skip</string>
+    <string name="welcome_home">WELCOME HOME!</string>
+
 </resources>
