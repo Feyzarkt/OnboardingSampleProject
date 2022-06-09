@@ -3,9 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/cartec/Documents/OnboardingSampleProject/app/src/main/res/drawable/bg_button.xml" value="0.1185" />
+        <entry key="..\:/Users/cartec/Documents/OnboardingSampleProject/app/src/main/res/drawable/bg_button_border.xml" value="0.1185" />
+        <entry key="..\:/Users/cartec/Documents/OnboardingSampleProject/app/src/main/res/drawable/bg_onboarding.xml" value="0.1185" />
+        <entry key="..\:/Users/cartec/Documents/OnboardingSampleProject/app/src/main/res/drawable/indicator_active_background.xml" value="0.1185" />
+        <entry key="..\:/Users/cartec/Documents/OnboardingSampleProject/app/src/main/res/drawable/indicator_inactive_background.xml" value="0.1185" />
         <entry key="..\:/Users/cartec/Documents/OnboardingSampleProject/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/cartec/Documents/OnboardingSampleProject/app/src/main/res/layout/fragment_onboarding.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/cartec/Documents/OnboardingSampleProject/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/cartec/Documents/OnboardingSampleProject/app/src/main/res/layout/fragment_onboarding.xml" value="0.18" />
         <entry key="..\:/Users/cartec/Documents/OnboardingSampleProject/app/src/main/res/layout/fragment_splash.xml" value="0.25" />
+        <entry key="..\:/Users/cartec/Documents/OnboardingSampleProject/app/src/main/res/layout/item_onboarding.xml" value="0.25" />
       </map>
     </option>
   </component>
