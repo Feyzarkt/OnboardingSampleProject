@@ -1,4 +1,4 @@
-# OnboardingSampleProject
+# Onboarding Sample Project
 When the application is first downloaded, we go to onboarding from the splash screen. We keep the information that onboarding was visited with shared preferences when we completed onboarding or pressed the skip button. By checking this information on the splash screen, we decide whether to switch to onboarding or the home page.\
 You can do transitions in the viewpager with the next button, by swiping and with indicators.
 
