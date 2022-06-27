@@ -1,11 +1,12 @@
 package com.feyzaurkut.onboardingsampleproject.ui.onboarding
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -34,7 +35,7 @@ class OnBoardingFragment : Fragment() {
         return binding.root
     }
 
-    private fun initAdapter(){
+    private fun initAdapter() {
         onBoardingAdapter = OnBoardingAdapter(
             listOf(
                 OnBoardingItem(
@@ -57,71 +58,74 @@ class OnBoardingFragment : Fragment() {
         binding.viewPager.adapter = onBoardingAdapter
     }
 
-    private fun setCurrentIndicator(position: Int){
+    private fun setCurrentIndicator(position: Int) {
         val childCount = binding.llIndicators.childCount
-        for(i in 0 until childCount){
+        for (i in 0 until childCount) {
             val imageView = binding.llIndicators.getChildAt(i) as ImageView
-            if(i == position)
+            if (i == position)
                 imageView.setImageResource(R.drawable.indicator_active_background)
             else
                 imageView.setImageResource(R.drawable.indicator_inactive_background)
         }
     }
 
-    private fun initListeners(){
-        binding.btnNext.setOnClickListener {
-            if(binding.viewPager.currentItem +1 < onBoardingAdapter.itemCount-1)
-                binding.viewPager.currentItem += 1
-            else if(binding.viewPager.currentItem +1 < onBoardingAdapter.itemCount){
-                finishIsVisible(true)
-                binding.viewPager.currentItem += 1
+    private fun initListeners() {
+        with(binding) {
+            btnNext.setOnClickListener {
+                if (viewPager.currentItem + 1 < onBoardingAdapter.itemCount - 1)
+                    viewPager.currentItem += 1
+                else if (viewPager.currentItem + 1 < onBoardingAdapter.itemCount) {
+                    finishIsVisible(true)
+                    viewPager.currentItem += 1
+                }
             }
-        }
-        binding.btnFinish.setOnClickListener {
-            SharedPreferences(requireContext()).putBoolean(true)
-            findNavController().navigate(R.id.action_onboardingFragment_to_homeFragment)
-        }
-        binding.btnSkip.setOnClickListener {
-            SharedPreferences(requireContext()).putBoolean(true)
-            findNavController().navigate(R.id.action_onboardingFragment_to_homeFragment)
-        }
-        binding.ivFirst.setOnClickListener {
-            binding.viewPager.currentItem = 0
-        }
-        binding.ivSecond.setOnClickListener {
-            binding.viewPager.currentItem = 1
-        }
-        binding.ivThird.setOnClickListener {
-            binding.viewPager.currentItem = 2
+            btnFinish.setOnClickListener {
+                SharedPreferences(requireContext()).putBoolean(true)
+                findNavController().navigate(R.id.action_onboardingFragment_to_homeFragment)
+            }
+            btnSkip.setOnClickListener {
+                SharedPreferences(requireContext()).putBoolean(true)
+                findNavController().navigate(R.id.action_onboardingFragment_to_homeFragment)
+            }
+            ivFirst.setOnClickListener {
+                viewPager.currentItem = 0
+            }
+            ivSecond.setOnClickListener {
+                viewPager.currentItem = 1
+            }
+            ivThird.setOnClickListener {
+                viewPager.currentItem = 2
+            }
         }
     }
 
-    private fun initViewPagerListener(){
+    private fun initViewPagerListener() {
         binding.viewPager.registerOnPageChangeCallback(object :
-            ViewPager2.OnPageChangeCallback(){
+            ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 setCurrentIndicator(position)
-                if(binding.viewPager.currentItem +1 < onBoardingAdapter.itemCount){
+                if (binding.viewPager.currentItem + 1 < onBoardingAdapter.itemCount) {
                     finishIsVisible(false)
-                }
-                else finishIsVisible(true)
+                } else finishIsVisible(true)
             }
         })
-        (binding.viewPager.getChildAt(0) as RecyclerView).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+        (binding.viewPager.getChildAt(0) as RecyclerView).overScrollMode =
+            RecyclerView.OVER_SCROLL_NEVER
     }
 
-    private fun finishIsVisible(isVisible: Boolean){
-        if(isVisible){
-            binding.btnNext.visibility = View.GONE
-            binding.btnSkip.visibility = View.GONE
-            binding.btnFinish.visibility = View.VISIBLE
-        }
-        else{
-            binding.btnNext.visibility = View.VISIBLE
-            binding.btnSkip.visibility = View.VISIBLE
-            binding.btnFinish.visibility = View.GONE
+    private fun finishIsVisible(isVisible: Boolean) {
+        with(binding) {
+            if (isVisible) {
+                btnNext.isVisible = false
+                btnSkip.isVisible = false
+                btnFinish.isVisible = true
+            } else {
+                btnNext.isVisible = true
+                btnSkip.isVisible = true
+                btnFinish.isVisible = false
+            }
         }
     }
-    
+
 }

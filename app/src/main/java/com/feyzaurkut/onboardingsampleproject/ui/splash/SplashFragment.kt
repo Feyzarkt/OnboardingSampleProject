@@ -21,7 +21,7 @@ class SplashFragment : Fragment() {
         val isVisited = context?.let { SharedPreferences(it).getBoolean() }
 
         Handler(Looper.getMainLooper()).postDelayed({
-            if(isVisited == true) findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+            if (isVisited == true) findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
             else findNavController().navigate(R.id.action_splashFragment_to_onboardingFragment)
         }, 2000)
 
